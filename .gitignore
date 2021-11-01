@@ -1,0 +1,29 @@
+# .gitignore
+*.py[cod]
+.cache
+.pytest_cache
+__pycache__
+
+# testing output
+*.xml
+*.log
+cover
+.coverage
+htmlcov
+__snapshots
+mycustompath
+
+# packaging
+MANIFEST
+dist
+
+# mac
+.DS_Store
+
+# IDE
+/.idea
+.vscode
+
+# docs output
+docs/build
+docs/out
