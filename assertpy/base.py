@@ -68,7 +68,7 @@ class ComparableAssert(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def is_strict_between(self, start_exclusive_boundary, end_exclusive_boundary):
+    def is_strictly_between(self, start_exclusive_boundary, end_exclusive_boundary):
         pass
 
     @abstractmethod
@@ -114,7 +114,7 @@ class SizeComparableAssert(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def is_size_strict_between(self, start_exclusive_boundary, end_exclusive_boundary):
+    def is_size_strictly_between(self, start_exclusive_boundary, end_exclusive_boundary):
         pass
 
     @abstractmethod
@@ -244,7 +244,7 @@ class AbstractComparableAssert(ComparableAssert, AbstractAssert, Comparator, ABC
         self.passed = self.compare(self.actual, start_inclusive_boundary) >= 0 and self.compare(self.actual, end_inclusive_boundary) <= 0
         return self
 
-    def is_strict_between(self, start_exclusive_boundary, end_exclusive_boundary):
+    def is_strictly_between(self, start_exclusive_boundary, end_exclusive_boundary):
         if not self.passed:
             return self
         self.passed = self.compare(self.actual, start_exclusive_boundary) > 0 and self.compare(self.actual, end_exclusive_boundary) < 0
@@ -319,7 +319,7 @@ class AbstractSizeComparableAssert(SizeComparableAssert, AbstractAssert, Compara
         self.passed = self.compare(self.size(), start_inclusive_boundary) >= 0 and self.compare(self.size(), end_inclusive_boundary) <= 0
         return self
 
-    def is_size_strict_between(self, start_exclusive_boundary, end_exclusive_boundary):
+    def is_size_strictly_between(self, start_exclusive_boundary, end_exclusive_boundary):
         if not self.passed:
             return self
         self.passed = self.compare(self.size(), start_exclusive_boundary) > 0 and self.compare(self.size(), end_exclusive_boundary) < 0
