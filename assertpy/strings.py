@@ -9,59 +9,105 @@ class StringAssert(metaclass=ABCMeta):
 
     @abstractmethod
     def is_empty(self):
+        """
+        :rtype: StringAssert
+        """
         pass
 
     @abstractmethod
     def is_not_empty(self):
+        """
+        :rtype: StringAssert
+        """
         pass
 
     @abstractmethod
     def is_blank(self):
+        """
+        :rtype: StringAssert
+        """
         pass
 
     @abstractmethod
     def is_not_blank(self):
+        """
+        :rtype: StringAssert
+        """
         pass
 
     @abstractmethod
     def starts_with(self, prefix):
+        """
+        :rtype: StringAssert
+        """
         pass
 
     @abstractmethod
     def does_not_start_with(self, prefix):
+        """
+        :rtype: StringAssert
+        """
         pass
 
     @abstractmethod
     def ends_with(self, suffix):
+        """
+        :rtype: StringAssert
+        """
         pass
 
     @abstractmethod
     def does_not_end_with(self, suffix):
+        """
+        :rtype: StringAssert
+        """
         pass
 
     @abstractmethod
     def contains(self, search_str):
+        """
+        :rtype: StringAssert
+        """
         pass
 
     @abstractmethod
     def does_not_contain(self, search_str):
+        """
+        :rtype: StringAssert
+        """
         pass
 
     @abstractmethod
     def is_all_Lower_case(self):
+        """
+        :rtype: StringAssert
+        """
         pass
 
     @abstractmethod
     def is_all_upper_case(self):
+        """
+        :rtype: StringAssert
+        """
         pass
 
     @abstractmethod
     def is_number_creatable(self):
+        """
+        :rtype: StringAssert
+        """
+        pass
+
+    @abstractmethod
+    def is_ascii(self):
+        """
+        :rtype: StringAssert
+        """
         pass
 
 
 class DefaultStringAssert(StringAssert, AbstractAssert):
-    def __init__(self, actual):
+    def __init__(self, actual:str):
         super(DefaultStringAssert, self).__init__(actual)
 
     def is_empty(self):
@@ -146,3 +192,9 @@ class DefaultStringAssert(StringAssert, AbstractAssert):
         except ValueError:
             self.passed = False
             return self
+
+    def is_ascii(self):
+        if not self.passed:
+            return self
+        self.passed = self.actual.isascii()
+        return self

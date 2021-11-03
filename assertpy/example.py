@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-
 import time
 
-from assertpy.assertion import assert_that
+from assertpy.assertions import assert_that
 from assertpy.base import AbstractAssert
+from assertpy.collection import DefaultCollectionAssert
 
 if __name__ == "__main__":
     a = AbstractAssert(None)
@@ -22,7 +23,7 @@ if __name__ == "__main__":
 
     print(m.isdigit())
 
-    assert_that(1).is_not_none().is_one().then_fail_throw()
     n = {'a': 1}
     print(len(n))
-
+    assert_that((1)).has_one_size().then_fail_throw(Exception('失败'))
+    pass

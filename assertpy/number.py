@@ -11,10 +11,6 @@ class NumberAssert(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def is_zero(self):
-        pass
-
-    @abstractmethod
     def is_not_zero(self):
         pass
 

@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 from abc import abstractmethod, ABCMeta, ABC
 
-from assertpy.base import AbstractAssert, AbstractSizeComparableAssert
+from assertpy.base import AbstractAssert, AbstractSizeComparableAssert, Assert, SizeComparableAssert
+from assertpy.utils import CollectionUtils
 
 
 class CollectionAssert(metaclass=ABCMeta):
-
     @abstractmethod
     def is_empty(self):
         pass
@@ -77,24 +77,7 @@ class AbstractCollectionAssert(CollectionAssert, AbstractSizeComparableAssert, A
     def contains_all(self, values):
         if not self.passed:
             return self
-        if values is None or self.size() == 0:
-            self.passed = True
-            return self
-        elements_already_seen = set()
-        for next_element in values:
-            if next_element in elements_already_seen:
-                continue
-            found_current_element = False
-            for i in range(self.size()):
-                p = self.get(i)
-                elements_already_seen.add(p)
-                if p is None if next_element is None else next_element == p:
-                    found_current_element = True
-                    break
-            if not found_current_element:
-                self.passed = False
-                return self
-        self.passed = True
+        self.passed = CollectionUtils.contains_all(self.actual, values)
         return self
 
     def contains_any(self, values):

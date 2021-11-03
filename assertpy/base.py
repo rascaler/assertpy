@@ -180,7 +180,7 @@ class AbstractAssert(Assert):
 
     def then_fail_throw(self, obj, format_msg=None, arguments=None):
         if self.passed:
-            return
+            return self
         self._write_custom_log(format_msg, arguments)
         if isinstance(obj, Exception):
             raise obj

@@ -9,42 +9,72 @@ from assertpy.utils import CollectionUtils
 class DictAssert(metaclass=ABCMeta):
     @abstractmethod
     def is_empty(self):
+        """
+        :rtype: DictAssert
+        """
         pass
 
     @abstractmethod
     def is_not_empty(self):
+        """
+        :rtype: DictAssert
+        """
         pass
 
     @abstractmethod
     def contains_key(self, key):
+        """
+        :rtype: DictAssert
+        """
         pass
 
     @abstractmethod
     def contains_keys(self, keys):
+        """
+        :rtype: DictAssert
+        """
         pass
 
     @abstractmethod
     def does_not_contain_key(self, key):
+        """
+        :rtype: DictAssert
+        """
         pass
 
     @abstractmethod
     def does_not_contain_keys(self, keys):
+        """
+        :rtype: DictAssert
+        """
         pass
 
     @abstractmethod
     def contains_value(self, value):
+        """
+        :rtype: DictAssert
+        """
         pass
 
     @abstractmethod
     def contains_values(self, values):
+        """
+        :rtype: DictAssert
+        """
         pass
 
     @abstractmethod
     def does_not_contain_value(self, value):
+        """
+        :rtype: DictAssert
+        """
         pass
 
     @abstractmethod
     def does_not_contain_values(self, values):
+        """
+        :rtype: DictAssert
+        """
         pass
 
 
